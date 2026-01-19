@@ -1,10 +1,8 @@
 from __future__ import annotations
-
 import csv
 import re
 from pathlib import Path
 from typing import Optional, List, Tuple
-
 from model import Modul, ModulErgebnis
 from storage import save_module
 
@@ -42,7 +40,7 @@ def detect_dialect(csv_path: Path) -> csv.Dialect:
     try:
         return sniffer.sniff(sample, delimiters=[",", ";", "\t"])
     except csv.Error:
-        # Fallback: Semikolon ist in DE oft Standard
+
         class D(csv.Dialect):
             delimiter = ";"
             quotechar = '"'
@@ -64,20 +62,15 @@ def import_csv_to_json(csv_path: Path, json_path: Path, debug: bool = True) -> L
 
         for i, row in enumerate(reader, start=1):
             total_rows += 1
-            # leere Zeilen skip
             if not row or all(not clean(c) for c in row):
                 continue
 
-            # Debug: zeig die ersten 5 Zeilen so wie Python sie sieht
             if debug and i <= 5:
                 print(f"[DEBUG] Row {i}: {row}")
 
-            # Manche Exporte liefern alles in 1 Zelle -> dann splitte nochmal hart
-            # Sonderfall: ganze Zeile ist ein einziges quoted CSV-Feld
             if len(row) == 1:
                 raw = row[0]
 
-            # Versuche, die innere CSV korrekt zu parsen
             try:
                 inner_reader = csv.reader(
                 [raw],
@@ -90,8 +83,6 @@ def import_csv_to_json(csv_path: Path, json_path: Path, debug: bool = True) -> L
             except Exception:
                 continue
 
-
-            # Name ist fast immer Spalte 0
             name = clean(row[0])
             if not name:
                 continue
@@ -105,7 +96,7 @@ def import_csv_to_json(csv_path: Path, json_path: Path, debug: bool = True) -> L
             if grade is None:
                 continue
 
-            # ECTS (1..30) finden, meist am Ende
+            # ECTS (1..30) finden
             ects = None
             for c in reversed(row):
                 ects = ects_strict(c)
@@ -120,10 +111,10 @@ def import_csv_to_json(csv_path: Path, json_path: Path, debug: bool = True) -> L
             key = (name.lower(), ects)
             if key in modules_by_key:
                 ex = modules_by_key[key]
-                # Zahl-Note schlägt None
+
                 if ex.ergebnis and ex.ergebnis.note is None and ergebnis.note is not None:
                     ex.ergebnis = ergebnis
-                # BESTANDEN schlägt NICHT_BESTANDEN
+
                 if ex.ergebnis and ex.ergebnis.status != "BESTANDEN" and ergebnis.status == "BESTANDEN":
                     ex.ergebnis.status = "BESTANDEN"
             else:
