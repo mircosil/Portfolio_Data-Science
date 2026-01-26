@@ -1,5 +1,9 @@
 Installationsanleitung - Studien-Dashboard
 
+GitHub-Repository:
+    https://github.com/mircosil/Portfolio_Data-Science
+
+
 1. Voraussetzungen:
     Windows 10 oder 11
     Python 3.10 oder neuer | Download: https://www.python.org/downloads/ (Beim Installieren die Option "Add Python to PATH" aktivieren)
