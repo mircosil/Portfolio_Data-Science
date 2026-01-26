@@ -1,12 +1,12 @@
 Installationsanleitung - Studien-Dashboard
 
-1. Voraussetzungen
+1. Voraussetzungen:
     Windows 10 oder 11
     Python 3.10 oder neuer | Download: https://www.python.org/downloads/ (Beim Installieren die Option "Add Python to PATH" aktivieren)
     Optional: GIT (wird nur zum Klonen des Repositories benötigt) | Download: https://git-scm.com/downloads
 
 
-2. Repository herunterladen
+2. Repository herunterladen:
     Variante A: Klonen über GIT | im Terminal folgendes eingeben:
         gh repo clone mircosil/Portfolio_Data-Science
     
@@ -16,7 +16,8 @@ Installationsanleitung - Studien-Dashboard
         3. Ordner "Portfolio_Data-Science-main" öffnen
 
 
-3. Projektstruktur prüfen
+3. Projektstruktur prüfen:
+
     Portfolio_Data-Science/
     │
     ├── src/
@@ -60,6 +61,6 @@ Installationsanleitung - Studien-Dashboard
     ==================================================
 
 
-6. Fehler & Lösungen
+6. Fehler & Lösungen:
     Fehler: Encoding-Probleme bei CSV
     Lösung: die CSV-Datei muss in UTF-8 gespeichert sein
