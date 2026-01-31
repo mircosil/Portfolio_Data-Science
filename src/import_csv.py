@@ -1,3 +1,21 @@
+"""
+import_csv.py – CSV-Import für das Studien-Dashboard.
+
+Diese Komponente liest eine CSV-Datei mit Modulleistungen ein und erzeugt daraus
+eine Liste von Modul-Objekten (Domänenmodell aus model.py).
+
+Aufgaben:
+- CSV-Dialekt (Trennzeichen) erkennen
+- Rohdaten bereinigen (Whitespace/Quotes)
+- Note/Status interpretieren (z.B. "3,7", "NB", "A", "B")
+- ECTS validieren (1..30)
+- Duplikate zusammenführen (z.B. mehrfach exportierte Einträge)
+
+Wichtig:
+- Diese Datei speichert NICHT selbst in JSON.
+- Persistenz erfolgt getrennt über JsonStorage (storage.py).
+"""
+
 from __future__ import annotations
 
 import csv

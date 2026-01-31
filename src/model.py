@@ -1,3 +1,15 @@
+"""
+model.py – Domänenmodell des Studien-Dashboard-Protototyps.
+
+Dieses Modul enthält ausschließlich fachliche Klassen und Berechnungslogik.
+Es übernimmt KEINE Dateioperationen oder Benutzerausgabe.
+
+Enthaltene Klassen:
+- ModulErgebnis     → Ergebnis einer Prüfung (Note + Status)
+- Modul             → einzelnes Studienmodul mit ECTS
+- StudienDashboard  → zentrale Berechnungslogik für Fortschritt und Kennzahlen
+"""
+
 from dataclasses import dataclass
 from typing import List, Optional
 

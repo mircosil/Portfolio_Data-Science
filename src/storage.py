@@ -1,3 +1,10 @@
+"""
+storage.py – Persistenzschicht (JSON) für das Studien-Dashboard.
+
+Diese Komponente kapselt das Speichern und Laden der Modul-Daten in und aus einer JSON-Datei.
+Damit bleiben die Domänenklassen (model.py) frei von Dateioperationen.
+"""
+
 import json
 from pathlib import Path
 from typing import List

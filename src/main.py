@@ -1,3 +1,19 @@
+"""
+main.py – Einstiegspunkt des Studien-Dashboard-Prototyps.
+
+Diese Datei koordiniert den gesamten Programmablauf:
+- Import der CSV-Daten (falls noch keine JSON existiert)
+- Laden/Speichern über JsonStorage
+- Erzeugen des StudienDashboard-Objekts
+- Ausgabe der Ergebnisse im Terminal (ConsoleRenderer-Funktionen)
+
+Trennung der Verantwortlichkeiten:
+- Fachlogik → model.py
+- Persistenz → storage.py
+- CSV-Import → import_csv.py
+- Darstellung → hier (Konsole)
+"""
+
 from pathlib import Path
 from model import StudienDashboard
 from storage import JsonStorage
